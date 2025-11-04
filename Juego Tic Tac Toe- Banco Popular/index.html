@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe - Loading</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- PANEL 1: LOADING -->
+    <div id="panelLoading">
+        <h1 class="loadingText">LOADING</h1>
+        
+        <div class="progressContainer">
+            <div class="progressBar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- PANEL 2: SELECCIÓN DE MODO -->
+    <div id="panelSeleccionModo" class="hidden">
+        <div class="contenedorSeleccion">
+            <h1 class="tituloJuego">Tic Tac Toe</h1>
+        
+            <button class="botonModo botonCPU" id="botonVsCPU">
+                JUGADOR VS CPU
+            </button>
+        
+            <button class="botonModo botonJugador" id="botonVsJugador">
+                JUGADOR VS JUGADOR
+            </button>
+        </div>
+    </div>
+
+
+
+
+    <!-- PANEL 3: NOMBRAR JUGADORES (Jugador vs Jugador) -->
+    <div id="panelNombresJugadores" class="hidden">
+        <div class="contenedorNombres">
+            <h2 class="tituloNombres">NOMBRAR JUGADORES</h2>
+        
+            <input 
+                type="text" 
+                class="inputNombre" 
+                id="inputJugador1" 
+                placeholder="Jugador 1"
+                maxlength="20"
+            >
+        
+            <input 
+                type="text" 
+                class="inputNombre" 
+                id="inputJugador2" 
+                placeholder="Jugador 2"
+                maxlength="20"
+            >
+        
+            <button class="botonIniciar" id="botonIniciarJugadores">
+                INICIAR
+            </button>
+        </div>
+    </div>
+
+
+    <!-- PANEL 4: NOMBRAR JUGADOR (Jugador vs CPU -->
+    <div id="panelNombreCPU" class="hidden">
+        <div class="contenedorNombres">
+            <h2 class="tituloNombres">NOMBRAR JUGADOR</h2>
+        
+            <input 
+                type="text" 
+                class="inputNombre" 
+                id="inputJugadorSolo" 
+                placeholder="Nombrar Jugador"
+                maxlength="20"
+            >
+        
+            <button class="botonIniciar" id="botonIniciarCPU">
+                INICIAR
+            </button>
+        </div>
+    </div>
+
+
+    <!-- PANEL 5: JUEGO -->
+    <div id="panelJuego" class="hidden">
+        <!-- Botón de volver (flecha atrás) -->
+        <button class="botonVolver" id="botonVolver">
+            <svg width="67" height="67" viewBox="0 0 24 24" fill="none">
+                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="white"/>
+            </svg>
+        </button>
+    
+        <!-- Botón de reinicio -->
+        <button class="botonReinicio" id="botonReinicio">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none">
+                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="white"/>
+            </svg>
+        </button>
+    
+        <!-- Encabezado con jugadores -->
+        <div class="encabezadoJugadores">
+            <!-- Jugador 1 -->
+            <div class="jugadorInfo">
+                <p class="nombreJugadorHeader" id="nombreJugador1Header">Jugador 1</p>
+                <div class="circuloJugador circuloJugador1">
+                    <span class="inicialesJugador" id="inicialesJugador1">J1</span>
+                </div>
+            </div>
+        
+            <!-- VS -->
+            <div class="vsTexto">VS</div>
+        
+            <!-- Jugador 2 / CPU -->
+            <div class="jugadorInfo">
+                <p class="nombreJugadorHeader" id="nombreJugador2Header">Jugador 2</p>
+                <div class="circuloJugador circuloJugador2">
+                    <span class="inicialesJugador inicialesJugador2" id="inicialesJugador2">J2</span>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Panel principal del juego (cuadro negro) -->
+        <div class="panelPrincipalJuego">
+            <!-- Marcador de ganadas -->
+            <div class="seccionMarcador">
+                <!-- Ganadas Jugador 1 -->
+                <div class="marcadorItem">
+                    <span class="inicialesMarcador" id="inicialesMarcador1">J1</span>
+                    <span class="numeroGanadas" id="ganadasJugador1">0 GANADAS</span>
+                </div>
+            
+                <!-- Ganadas Jugador 2 / CPU -->
+                <div class="marcadorItem">
+                    <span class="inicialesMarcador inicialesMarcadorCPU" id="inicialesMarcador2">J2</span>
+                    <span class="numeroGanadas" id="ganadasJugador2">0 GANADAS</span>
+                </div>
+            
+                <!-- Empates -->
+                <div class="marcadorItem">
+                    <svg class="iconoBalanza" width="54" height="42" viewBox="0 0 24 24" fill="white">
+                        <path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zm-7-6.74L16.71 6H6.29l5.21-2.74m0-2.26L2 6v2h19V6l-9.5-5z"/>
+                    </svg>
+                    <span class="numeroGanadas" id="empates">0 EMPATES</span>
+                </div>
+            </div>
+        
+            <!-- Tablero 3x3 -->
+            <div class="tableroJuego" id="tableroJuego">
+                <div class="casillaJuego" data-index="0"></div>
+                <div class="casillaJuego" data-index="1"></div>
+                <div class="casillaJuego" data-index="2"></div>
+                <div class="casillaJuego" data-index="3"></div>
+                <div class="casillaJuego" data-index="4"></div>
+                <div class="casillaJuego" data-index="5"></div>
+                <div class="casillaJuego" data-index="6"></div>
+                <div class="casillaJuego" data-index="7"></div>
+                <div class="casillaJuego" data-index="8"></div>
+            </div>
+        </div>
+    </div>
+   
+    
+    <div id="overlayModal" class="overlayModal hidden"></div>
+
+    <!-- PANEL 6: VICTORIA -->
+    <div id="modalVictoria" class="modalEmergente hidden">
+        <div class="contenedorModalGrande">
+            <!-- Icono de trofeo -->
+            <svg class="iconoTrofeo" viewBox="0 0 176 197" fill="none">
+                <path d="M88 10L100 40H130L106 58L116 88L88 70L60 88L70 58L46 40H76L88 10Z" fill="#FFD700"/>
+                <path d="M70 90V140H106V90" stroke="#FFD700" stroke-width="4"/>
+                <rect x="60" y="140" width="56" height="40" fill="#FFD700"/>
+                <ellipse cx="88" cy="160" rx="35" ry="15" fill="#FFA500"/>
+            </svg>
+        
+            <h2 class="tituloModal">VICTORIA</h2>
+            <p class="nombreGanadorModal" id="nombreGanadorModal">Nombre del Jugador</p>
+        
+            <!-- Marcador -->
+            <div class="marcadorModal">
+                <div class="itemMarcadorModal">
+                    <span class="inicialesMarcadorModal" id="inicialesModalV1">J1</span>
+                    <span class="textoMarcadorModal" id="ganadasModalV1">0 GANADAS</span>
+                </div>
+                <div class="itemMarcadorModal">
+                    <span class="inicialesMarcadorModal" id="inicialesModalV2">J2</span>
+                    <span class="textoMarcadorModal" id="ganadasModalV2">0 GANADAS</span>
+                </div>
+                <div class="itemMarcadorModal">
+                    <svg class="iconoBalanzaModal" viewBox="0 0 24 24" fill="white">
+                        <path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zm-7-6.74L16.71 6H6.29l5.21-2.74m0-2.26L2 6v2h19V6l-9.5-5z"/>
+                    </svg>
+                    <span class="textoMarcadorModal" id="empatesModalV">0 EMPATES</span>
+                </div>
+            </div>
+        
+            <!-- Botones -->
+            <div class="botonesModal">
+                <button class="botonModalSalir" id="botonSalirVictoria">SALIR</button>
+                <button class="botonModalContinuar" id="botonProximoRound">PRÓXIMO ROUND</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 7: PERDISTE -->
+    <div id="modalDerrota" class="modalEmergente hidden">
+        <div class="contenedorModalGrande">
+            <!-- Icono de derrota (X triste) -->
+            <svg class="iconoDerrota" viewBox="0 0 222 145" fill="none">
+                <circle cx="111" cy="72.5" r="60" fill="none" stroke="#EF9519" stroke-width="8"/>
+                <line x1="85" y1="50" x2="110" y2="75" stroke="#EF9519" stroke-width="8" stroke-linecap="round"/>
+                <line x1="110" y1="50" x2="85" y2="75" stroke="#EF9519" stroke-width="8" stroke-linecap="round"/>
+                <line x1="112" y1="50" x2="137" y2="75" stroke="#EF9519" stroke-width="8" stroke-linecap="round"/>
+                <line x1="137" y1="50" x2="112" y2="75" stroke="#EF9519" stroke-width="8" stroke-linecap="round"/>
+                <path d="M85 100Q111 120 137 100" stroke="#EF9519" stroke-width="8" stroke-linecap="round" fill="none"/>
+            </svg>
+        
+            <h2 class="tituloModal">PERDISTE</h2>
+            <p class="nombreGanadorModal" id="nombrePerdedorModal">Nombre del Jugador</p>
+        
+            <!-- Marcador -->
+            <div class="marcadorModal">
+                <div class="itemMarcadorModal">
+                    <span class="inicialesMarcadorModal" id="inicialesModalD1">J1</span>
+                    <span class="textoMarcadorModal" id="ganadasModalD1">0 GANADAS</span>
+                </div>
+                <div class="itemMarcadorModal">
+                    <span class="inicialesMarcadorModal" id="inicialesModalD2">J2</span>
+                    <span class="textoMarcadorModal" id="ganadasModalD2">0 GANADAS</span>
+                </div>
+                <div class="itemMarcadorModal">
+                    <svg class="iconoBalanzaModal" viewBox="0 0 24 24" fill="white">
+                        <path d="M6.5 10h-2v7h2v-7zm6 0h-2v7h2v-7zm8.5 9H2v2h19v-2zm-2.5-9h-2v7h2v-7zm-7-6.74L16.71 6H6.29l5.21-2.74m0-2.26L2 6v2h19V6l-9.5-5z"/>
+                    </svg>
+                    <span class="textoMarcadorModal" id="empatesModalD">0 EMPATES</span>
+                </div>
+            </div>
+        
+            <!-- Botones -->
+            <div class="botonesModal">
+                <button class="botonModalSalir" id="botonSalirDerrota">SALIR</button>
+                <button class="botonModalContinuar" id="botonProximoRoundDerrota">PRÓXIMO ROUND</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 8: CONFIRMAR REINICIO -->
+    <div id="modalReinicio" class="modalEmergente hidden">
+        <div class="contenedorModalPequeno">
+            <h2 class="tituloModalReinicio">¿Seguro que desea reiniciar la partida?</h2>
+        
+            <div class="botonesModalReinicio">
+                <button class="botonModalCancelar" id="botonCancelarReinicio">CANCELAR</button>
+                <button class="botonModalReiniciar" id="botonConfirmarReinicio">REINICIAR PARTIDA</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+```
